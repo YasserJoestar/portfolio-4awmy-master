@@ -1,0 +1,47 @@
+/* Global resets & font */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── TUI: CRT scanlines ─────────────────────────────────────── */
+.scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 65, 0.03) 2px,
+    rgba(0, 255, 65, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* ── TUI: custom scrollbar ──────────────────────────────────── */
+.font-mono::-webkit-scrollbar {
+  width: 4px;
+}
+.font-mono::-webkit-scrollbar-track {
+  background: #000;
+}
+.font-mono::-webkit-scrollbar-thumb {
+  background: #14532d;
+  border-radius: 2px;
+}
+
+/* ── Blinking cursor animation ──────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
